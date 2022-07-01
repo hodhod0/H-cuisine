@@ -8,7 +8,7 @@ dotenv.config();
 
 
 
-//Routes
+//Import Routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -44,5 +44,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 module.exports = app;
