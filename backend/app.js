@@ -9,8 +9,8 @@ dotenv.config();
 
 
 //Import Routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+var userRouter = require("./routes/User")
 
 //Connection to mongoDB
 // conncet to mongodb
@@ -42,8 +42,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', userRouter);
 
+// error handler
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500).send({
+      success: false,
+      message: err.message
+  });
+});
 
 module.exports = app;
