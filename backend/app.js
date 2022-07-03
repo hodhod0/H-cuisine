@@ -13,6 +13,7 @@ dotenv.config();
 var userRouter = require("./routes/User")
 var categoryRouter = require("./routes/Category")
 var itemRouter = require("./routes/Item")
+var adminRouter = require("./routes/Admin")
 
 //Connection to mongoDB
 // conncet to mongodb
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/users', userRouter);
 app.use("/api/category",categoryRouter)
 app.use("/api/item",itemRouter)
+app.use("/api/admin",adminRouter)
 
 // error handler
 app.use(function(err, req, res, next) {
