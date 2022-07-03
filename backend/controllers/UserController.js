@@ -1,6 +1,89 @@
 const Model = require("../models/UserModel")
+const Jwt = require("jsonwebtoken")
+const bycrpt = require("bcrypt")
+
 
 class Controller {
+
+    signup = (req,res) => {
+        const { username, email, password,phone,address} = req.body;
+    
+        if(!username || !email || !password || !phone ||!address){
+            res.status(400).json({msg: 'Please enter all fields'});
+        }
+    
+        Model.findOne({email})
+        .then(user => {
+            if(user) return res.status(400).json({msg: 'User already exists'});
+    
+            const newUser = new Model({ username, email, password,phone,address});
+    
+            // Create salt and hash
+            bycrpt.genSalt(10, (err, salt) => {
+                bycrpt.hash(password, salt, (err, hash) => {
+                    if(err) throw err;
+                    newUser.password = hash;
+                    newUser.save()
+                        .then(user => {
+                            Jwt.sign(
+                                { id: user._id },
+                                process.env.JWT_SECRET_KEY,
+                                { expiresIn: 3600 },
+                                (err, token) => {
+                                    if(err) throw err;
+                                    res.json({
+                                        token,
+                                        user: {
+                                            id: user._id,
+                                            name: user.username,
+                                            email: user.email,
+                                            address:user.address,
+                                            phone:user.phone
+                                        }
+                                    });
+                                }
+                            )
+                        });
+                })
+            })
+        })
+    }
+
+     // Login Function to login as admin
+     login = async (req,res) => {
+        const { email, password } = req.body;
+        if(!email || !password){
+            res.status(400).json({msg: 'Please enter all fields'});
+        }
+        Model.findOne({email})
+            .then(user => {
+                if(!user) return res.status(400).json({msg: 'User does not exist'});
+    
+                // Validate password
+                bycrpt.compare(password, user.password)
+                    .then(isMatch => {
+                        if(!isMatch) return res.status(400).json({ msg: 'Invalid credentials'});
+    
+                        Jwt.sign(
+                            { id: user._id },
+                            process.env.JWT_SECRET_KEY,
+                            { expiresIn: 3600 },
+                            (err, token) => {
+                                if(err) throw err;
+                                res.json({
+                                    token,
+                                    user: {
+                                        id: user._id,
+                                        name: user.username,
+                                        email: user.email
+                                    }
+                                });
+                            }
+                        )
+                    })
+            })
+    }
+
     getAll(req, res, next) {
         Model.find({}, (err, response) => {
             if (err) return next(err);
