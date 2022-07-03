@@ -11,6 +11,8 @@ dotenv.config();
 //Import Routes
 
 var userRouter = require("./routes/User")
+var categoryRouter = require("./routes/Category")
+var itemRouter = require("./routes/Item")
 
 //Connection to mongoDB
 // conncet to mongodb
@@ -43,6 +45,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 app.use('/api/users', userRouter);
+app.use("/api/category",categoryRouter)
+app.use("/api/item",itemRouter)
 
 // error handler
 app.use(function(err, req, res, next) {
