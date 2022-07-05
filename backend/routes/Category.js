@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/CategoryController");
+const { authenticate } = require("../middelwar/auth");
 
-router.post("/", controller.post);
+router.post("/",authenticate, controller.post);
 router.put("/:id",controller.put);
 router.get("/",controller.getAll);
 router.get("/:id",controller.get);

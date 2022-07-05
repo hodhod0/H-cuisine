@@ -5,6 +5,10 @@ var logger = require('morgan');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose")
 dotenv.config();
+var createError = require('http-errors');
+var session = require('express-session');
+var cors = require('cors');
+var bodyparser = require('body-parser')
 
 
 
@@ -14,6 +18,7 @@ var userRouter = require("./routes/User")
 var categoryRouter = require("./routes/Category")
 var itemRouter = require("./routes/Item")
 var adminRouter = require("./routes/Admin")
+var orderItemRouter = require("./routes/OrderItem")
 
 //Connection to mongoDB
 // conncet to mongodb
@@ -37,6 +42,18 @@ dbConnection.once("open", () => console.log("Connected to DB!"));
 
 //Meddlewar
 var app = express();
+app.use(cors());
+app.use(bodyparser.json());
+var IS_PRODUCTION = app.get('env') === 'production'
+if (IS_PRODUCTION) {
+  app.set('trust proxy', 1) // secures the app if it is running behind Nginx/Apache/similar
+}
+app.use(session({
+  secret: 'keyword cat', //<-- this should be a secret phrase 
+  cookie: { secure: IS_PRODUCTION },//<-- secure only on production 
+  resave: true,
+  saveUninitialized: true
+}))
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,6 +66,12 @@ app.use('/api/users', userRouter);
 app.use("/api/category",categoryRouter)
 app.use("/api/item",itemRouter)
 app.use("/api/admin",adminRouter)
+app.use("/api/orderitem",orderItemRouter)
+
+// Create error
+app.use(function (req, res, next) {
+  next(createError(404));
+});
 
 // error handler
 app.use(function(err, req, res, next) {

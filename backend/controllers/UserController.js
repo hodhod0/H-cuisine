@@ -25,14 +25,14 @@ class Controller {
                     newUser.password = hash;
                     newUser.save()
                         .then(user => {
-                            Jwt.sign(
-                                { id: user._id },
-                                process.env.JWT_SECRET_KEY,
-                                { expiresIn: 3600 },
-                                (err, token) => {
+                            (
+                                // { id: user._id },
+                                // process.env.JWT_SECRET_KEY,
+                                // { expiresIn: 3600 },
+                                (err) => {
                                     if(err) throw err;
-                                    res.json({
-                                        token,
+                                    res.status(200).json({
+                                        
                                         user: {
                                             id: user._id,
                                             name: user.username,
@@ -66,10 +66,11 @@ class Controller {
     
                         Jwt.sign(
                             { id: user._id },
-                            process.env.JWT_SECRET_KEY,
-                            { expiresIn: 3600 },
+                            process.env.TOKEN_SCERET,
                             (err, token) => {
                                 if(err) throw err;
+                                
+                               res.header('auth-token', token).json({ user, token })
                                 res.json({
                                     token,
                                     user: {

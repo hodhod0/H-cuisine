@@ -22,7 +22,7 @@ const OrderSchema = new Schema({
         type:Boolean,
         required:true
     }
-})
+},{timestamps:true})
 
 const Order = mongoose.model("Order",OrderSchema )
 module.exports = Order;
