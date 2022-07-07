@@ -12,13 +12,18 @@ import {
 function App() {
   return (
     <div className="App">
-     <BrowserRouter>
-    <Routes>
-        <Route index  element={<Home />} />
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-    </Routes>
-  </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          {localStorage.getItem("token") !== null ?
+            <Route path='/home' element={<Home />} /> :
+            <Route path="/login" element={<Login />} />
+          }
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

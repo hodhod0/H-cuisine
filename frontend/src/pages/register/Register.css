@@ -1,83 +1,70 @@
-.container-login {
+.container-register {
     display: flex;
     flex-direction: inherit;
     justify-content: space-around;
-    margin-top: 128px;
     padding: 20px;
-    margin: 0;
     background-image: url("../../images/Backgroundcolour.jpg");
-    /* background-size: auto; */
-    background-size: 100% 100%;
-    /* overflow: hidden; */
-    height: 100%;
-
+    margin: 0;
 
 }
 
-.form-login-input{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-login {
+.form-register {
     border: 1px solid #F68E9A;
     border-radius: 15px;
     text-align: center;
-    padding: 20px;
-    background-color:var(--form);
-    height:10%;
-    margin-top: 115px;
-    margin-right: 90px;
+    padding: 0px 30px 0px 30px;
+    background-color: var(--form);
+    height: 20%;
+    margin-top: 90px;
+    margin-left: 77px;
 
 }
 
-.welcome-login {
+.welcome-register {
     max-width: 208px;
     padding-left: 8px;
     font-family: var(--fontFamily);
 }
 
-.input-login {
+.input-register {
     border-radius: 8px;
     border: 1px solid var(--primary);
-    background-color: #ffffffa8;
+    background-color: #FFFFFF;
     padding: 8px;
+    padding-right: 20px;
+    margin-top: 17px;
     font-family: var(--fontFamily);
-    margin-top: 20px;
 
 }
 
-.input-login:focus{
+.input-register:focus {
     outline: none;
 }
 
-
-
-.button-login {
+.button-register {
     background-color: var(--primary);
     border-radius: 8px;
     border: 1px solid var(--primary);
-    padding: 8px 87px 8px 87px;
+    padding: 8px 72px 8px 72px;
     cursor: pointer;
-    font-family: var(--fontFamily);
     margin-top: 20px;
+    font-family: var(--fontFamily);
 
 }
 
-.button-login:hover{
-    background-color: red;
-}
-.register-login{
+.login-register {
     border: none;
     background: transparent;
     cursor: pointer;
     margin-top: 17px;
     position: relative;
     max-width: 600px;
-    font-family: cursive;
+    font-family: var(--fontFamily);
+    margin-bottom: 15px;
 
 }
- .register-login:before{
+
+.login-register:before {
     content: '';
     display: block;
     width: 25px;
@@ -85,9 +72,10 @@
     background-color: rgb(129, 116, 116);
     position: absolute;
     right: 70px;
-    top: 11px;
- }
- .register-login:after{
+    top: 8px;
+}
+
+.login-register:after {
     content: '';
     display: block;
     width: 25px;
@@ -95,10 +83,5 @@
     background-color: rgb(129, 116, 116);
     position: absolute;
     left: 70px;
-    top: 11px;
- }
-
- .sa7en{
-    height: 500px;
-    width: 500px;
- }
+    top: 8px;
+}

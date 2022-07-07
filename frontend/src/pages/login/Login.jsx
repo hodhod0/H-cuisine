@@ -1,82 +1,119 @@
 import React from 'react'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../../api/api';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./login.css";
+import img from "../../images/sa7en1.png"
 
 const Login = () => {
-  const userRef = useRef();
-  const errRef = useRef();
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('')
-  const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false)
+  toast.configure();
 
-  const nav = useNavigate(); 
+  const [login, setLogin] = useState({
+    email: "",
+    password: ""
+
+  });
+
+  const [formErrors, setFormErrors] = useState({})
+  const [isSubmit, setIsSumint] = useState(false)
+  const nav = useNavigate();
 
   const hundleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user, password)
-    setUser('')
-    setPassword('')
-    setSuccess(true)
-
+    setFormErrors(validate(login))
+    setIsSumint(true)
+    const userData = {
+      email: login.email,
+      password: login.password,
+    }
+    axios.post("http://localhost:2000/api/users/login", userData).then(res => {
+      if (res.status === 200) {
+        toast.success("Login Successfully");
+        setLogin({
+          email: "",
+          password: ""
+        })
+        nav("/home")
+        localStorage.setItem("token",res.data.token)
+      }
+    })
+      .catch(err => {
+        console.log(err)
+        toast.error("Something went wrong while registering");
+      });
   }
-  useEffect(() => {
-    userRef.current.focus()
-  }, [])
 
   useEffect(() => {
-    setErrMsg('')
-  }, [user, password])
+    console.log(formErrors)
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(login)
+    }
 
+  }, [formErrors])
+  const validate = (values) => {
+    const errors = {}
+    const regex = "^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
+    if (!values.email) {
+      errors.email = "Email is required! ";
+    }
+    if (!values.password) {
+      errors.password = "Password is required! ";
+    }
+    return errors;
+  }
 
+  const handleChange = (e) => {
+    setLogin({
+      ...login, [e.target.name]: e.target.value
+    })
+  }
 
 
   return (
-    <>
-      {success ? (
-        <section>
-          <h1> You are logged in !</h1>
-          <br />
-          <p>
-            <a href='#'> Go to home</a>
-          </p>
-        </section>
-      ) : (
-        <section>
-          <h1>Sign in </h1>
-          <form onSubmit={hundleSubmit}>
-            <input type="text"
-              name=""
-              id=""
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
-              required
-              placeholder='User name'
-            />
+    
+      <div className='container-login'>
+          <img src={img} alt="sa7en" width={600} height={600} />
+
+        <section className='form-login'>
+          <p className='welcome-login'>Welcome to my kitchen
+            the place where
+            it taste special! </p>
+          <p className='welcome-login'>Have Fun :)</p>
+          <form onSubmit={hundleSubmit} className="form-login-input">
             <input
+              className='input-login'
+              type="email"
+              name="email"
+              id="email"
+              autoComplete="off"
+              onChange={handleChange}
+              value={login.email}
+              placeholder='Email'
+            />
+            <span>{formErrors.email}</span>
+            <input
+              className='input-login'
               type="password"
-              name=""
+              name="password"
               id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
+              onChange={handleChange}
+              value={login.password}
               placeholder='Password'
             />
-            <button type='submit' >Sign In </button>
+            <span>{formErrors.password}</span>
+            <button type='submit' className='button-login'>Log in </button>
           </form>
-          <p>
-            Need an Account?<br />
+        
             <span className="line">
               {/*put router link here*/}
               {/* <a href="http://localhost:3000/register">Sign Up</a> */}
-              <button onClick={()=>nav("/register")} > Sign Up</button>
+              <button className='register-login' onClick={() => nav("/register")} > Register</button>
             </span>
-          </p>
         </section>
-      )}
-    </>
+      </div>
+    
   )
 }
 

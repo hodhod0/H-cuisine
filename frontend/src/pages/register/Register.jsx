@@ -1,13 +1,18 @@
-import React, {  useState} from 'react'
+import React, { useState } from 'react'
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Register.css"
+import img from "../../images/sa7en.png"
+
 
 
 
 
 const Register = () => {
+  toast.configure();
+
   const [users, setUsers] = useState({
     username: "",
     email: "",
@@ -53,17 +58,20 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <section>
-        <form onSubmit={handleSubmit} style={{ display: "flex", maxWidth: 200 }}>
+    <div className='container-register'>
+
+      <section className='form-register'>
+      <p className='welcome-register'>Join our family :)</p>
+        <form onSubmit={handleSubmit} style={{ display: "flex", maxWidth: 200, flexDirection: "column" }}>
           <input
+            className='input-register'
             type="text"
             id="username"
             name="username"
-            autoComplete="off"
             required
             placeholder='User name'
             onChange={handleChange}
+            value={users.username}
 
 
           />
@@ -71,10 +79,12 @@ const Register = () => {
             type="email"
             id="email"
             name="email"
-            autoComplete="off"
             placeholder='Email'
             required
             onChange={handleChange}
+            value={users.email}
+            className='input-register'
+
 
           />
           <input
@@ -84,6 +94,9 @@ const Register = () => {
             placeholder='password'
             required
             onChange={handleChange}
+            value={users.password}
+            className='input-register'
+
           />
           <input
             type="number"
@@ -92,6 +105,9 @@ const Register = () => {
             placeholder='Phone'
             required
             onChange={handleChange}
+            value={users.phone}
+            className='input-register'
+
           />
           <input
             type="text"
@@ -100,18 +116,23 @@ const Register = () => {
             placeholder='Address'
             required
             onChange={handleChange}
+            value={users.address}
+            className='input-register'
+
 
           />
-          <button type='submit'>Register</button>
+          <button type='submit' className='button-register'>Register</button>
         </form>
-        <p>
-          Already registered?<br />
-          <span className="line">
-            {/*put router link here*/}
-            <button onClick={()=>nav("/login")} > Sign In</button>
-          </span>
-        </p>
+
+        <span className="line">
+          {/*put router link here*/}
+          <button onClick={() => nav("/login")} className="login-register" > Log in</button>
+        </span>
+
       </section>
+      <div >
+        <img src={img} alt="sa7en" width={600} height={600} />
+      </div>
 
     </div>
   )
