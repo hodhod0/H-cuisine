@@ -5,7 +5,7 @@ import axios from '../../api/api';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-import img from "../../images/sa7en1.png"
+import img from "../../images/sa7en4.png"
 
 const Login = () => {
   toast.configure();
@@ -36,7 +36,7 @@ const Login = () => {
           password: ""
         })
         nav("/home")
-        localStorage.setItem("token",res.data.token)
+        localStorage.setItem("token", res.data.token)
       }
     })
       .catch(err => {
@@ -72,48 +72,53 @@ const Login = () => {
 
 
   return (
-    
-      <div className='container-login'>
-          <img src={img} alt="sa7en" width={600} height={600} />
 
-        <section className='form-login'>
-          <p className='welcome-login'>Welcome to my kitchen
-            the place where
-            it taste special! </p>
-          <p className='welcome-login'>Have Fun :)</p>
-          <form onSubmit={hundleSubmit} className="form-login-input">
-            <input
-              className='input-login'
-              type="email"
-              name="email"
-              id="email"
-              autoComplete="off"
-              onChange={handleChange}
-              value={login.email}
-              placeholder='Email'
-            />
-            <span>{formErrors.email}</span>
-            <input
-              className='input-login'
-              type="password"
-              name="password"
-              id="password"
-              onChange={handleChange}
-              value={login.password}
-              placeholder='Password'
-            />
-            <span>{formErrors.password}</span>
-            <button type='submit' className='button-login'>Log in </button>
-          </form>
-        
-            <span className="line">
-              {/*put router link here*/}
-              {/* <a href="http://localhost:3000/register">Sign Up</a> */}
-              <button className='register-login' onClick={() => nav("/register")} > Register</button>
-            </span>
-        </section>
+    <div className='container-login'>
+      <div>
+        <img src={img} alt="sa7en" />
       </div>
-    
+
+      <section className='form-login'>
+        <p className='welcome-login'>Welcome to my kitchen
+          the place where
+          it taste special! </p>
+        <p className='welcome-login'>Have Fun :)</p>
+        <form onSubmit={hundleSubmit} className="form-login-input">
+          <div className='inputContainer'>
+          <input
+            className='input-login'
+            type="email"
+            name="email"
+            id="email"
+            autoComplete="off"
+            onChange={handleChange}
+            value={login.email}
+            placeholder='Email'
+          />
+          <span>{formErrors.email}</span>
+          </div>
+          <div className='inputContainer'>
+          <input
+            className='input-login'
+            type="password"
+            name="password"
+            id="password"
+            onChange={handleChange}
+            value={login.password}
+            placeholder='Password'
+          />
+          <span>{formErrors.password}</span></div>
+          <button type='submit' className='button-login'>Log in </button>
+        </form>
+
+        <span className="line">
+          {/*put router link here*/}
+          {/* <a href="http://localhost:3000/register">Sign Up</a> */}
+          <button className='register-login' onClick={() => nav("/register")} > Register</button>
+        </span>
+      </section>
+    </div>
+
   )
 }
 

@@ -8,15 +8,18 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Category from './pages/category/Category';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route index element={<Home />} />
           {localStorage.getItem("token") !== null ?
-            <Route path='/home' element={<Home />} /> :
+          <Route index element={<Home />} />&&
+          
+          <Route path='/home' element={<Home />} />&&
+          <Route path='/category' element={<Category/>}/> :
             <Route path="/login" element={<Login />} />
           }
           <Route path="/login" element={<Login />} />
