@@ -3,12 +3,8 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Register.css"
-import img from "../../images/sa7en.png"
-
-
-
-
+import "./Register.css";
+import img from "../../assets/images/sa7en.png";
 
 const Register = () => {
   toast.configure();
