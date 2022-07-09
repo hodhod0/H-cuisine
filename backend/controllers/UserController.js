@@ -27,7 +27,7 @@ class Controller {
                             .then(user => {
                                 (
                                     { id: user._id },
-                                    process.env.JWT_SECRET_KEY,
+                                    process.env.TOKEN_SCERET,
                                     { expiresIn: 3600 },
                                     (err) => {
                                         if (err) throw err;
