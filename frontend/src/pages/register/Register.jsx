@@ -63,8 +63,8 @@ const Register = () => {
 
   return (
     <div className='container-register d-flex justify-content-around align-items-center'>
-
-      <section className='form-register'>
+      <div className='col-12 col-md-5 position-relative' style={{textAlign: "-webkit-center"}}>
+      <div className='form-register text-center d-flex flex-column'>
         <p className="fs-4 mt-3 text-center fw-bold">Join our family :)</p>
         <form onSubmit={handleSubmit} className="d-flex flex-column form-register-input" >
           <input
@@ -127,9 +127,10 @@ const Register = () => {
         </form>
 
         <p className="mt-3 mb-0 register-return" onClick={() => nav("/login")}>Log in</p>
+        </div>
 
 
-      </section>
+      </div>
       <div className="col-12 col-md-7 text-center">
         {screenWidth < 400 ? (
           <img src={img} alt="sa7en" className="register-sahen" />
