@@ -50,3 +50,35 @@
     bottom: -70px;
     width: 300px;
 }
+.login-return {
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    max-width: 600px;
+    font-family: var(--fontFamily);
+    margin-bottom: 15px;
+    text-align: center;
+
+}
+
+.login-return:before {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: rgb(129, 116, 116);
+    position: absolute;
+    right: 40px;
+    top: 11px;
+}
+
+.login-return:after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: rgb(129, 116, 116);
+    position: absolute;
+    left: 40px;
+    top: 11px;
+}

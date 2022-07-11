@@ -105,25 +105,27 @@ const Login = () => {
             <input
               className="my-2 px-2 fs-5"
               type="email"
-              // id="email"
+              id="email"
               // autoComplete="off"
               onChange={handleChange}
               value={login.email}
               placeholder="Email"
+              name="email"
             />
             <input
               className="my-2 px-2 fs-5"
               type="password"
-              // id="password"
+              id="password"
               onChange={handleChange}
               value={login.password}
               placeholder="Password"
+              name="password"
             />
             <button type="submit" className="fs-5 my-2">
               Log in
             </button>
           </form>
-          <p className="mt-3 mb-0">Register</p>
+          <p className="mt-3 mb-0 login-return" onClick={() => nav("/register")}>Register</p>
         </div>
         <p className="position-absolute fs-2 have-fun text-center text-white">
           Have Fun :)

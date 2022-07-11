@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Register.css";
-import img from "../../assets/images/sa7en.png";
+import img from "../../assets/images/sahen.png";
 
 const Register = () => {
   toast.configure();
@@ -16,6 +16,14 @@ const Register = () => {
     phone: "",
     address: ""
   });
+  const [screenWidth, setScreenWidth] = useState(null);
+
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setScreenWidth(window.screen.width);
+    });
+  }, []);
   const handleChange = (e) => {
     let { name, value } = e.target;
     setUsers({ ...users, [name]: value });
@@ -54,13 +62,13 @@ const Register = () => {
   }
 
   return (
-    <div className='container-register'>
+    <div className='container-register d-flex justify-content-around align-items-center'>
 
       <section className='form-register'>
-      <p className='welcome-register'>Join our family :)</p>
-        <form onSubmit={handleSubmit} style={{ display: "flex", maxWidth: 200, flexDirection: "column" }}>
+        <p className="fs-4 mt-3 text-center fw-bold">Join our family :)</p>
+        <form onSubmit={handleSubmit} className="d-flex flex-column form-register-input" >
           <input
-            className='input-register'
+            className='my-2 px-2 fs-5'
             type="text"
             id="username"
             name="username"
@@ -79,7 +87,7 @@ const Register = () => {
             required
             onChange={handleChange}
             value={users.email}
-            className='input-register'
+            className='my-2 px-2 fs-5'
 
 
           />
@@ -91,7 +99,7 @@ const Register = () => {
             required
             onChange={handleChange}
             value={users.password}
-            className='input-register'
+            className='my-2 px-2 fs-5'
 
           />
           <input
@@ -102,7 +110,7 @@ const Register = () => {
             required
             onChange={handleChange}
             value={users.phone}
-            className='input-register'
+            className='my-2 px-2 fs-5'
 
           />
           <input
@@ -113,21 +121,21 @@ const Register = () => {
             required
             onChange={handleChange}
             value={users.address}
-            className='input-register'
-
-
+            className='my-2 px-2 fs-5'
           />
-          <button type='submit' className='button-register'>Register</button>
+          <button type='submit' className="fs-5 my-2">Register</button>
         </form>
 
-        <span className="line">
-          {/*put router link here*/}
-          <button onClick={() => nav("/login")} className="login-register" > Log in</button>
-        </span>
+        <p className="mt-3 mb-0 register-return" onClick={() => nav("/login")}>Log in</p>
+
 
       </section>
-      <div >
-        <img src={img} alt="sa7en" width={600} height={600} />
+      <div className="col-12 col-md-7 text-center">
+        {screenWidth < 400 ? (
+          <img src={img} alt="sa7en" className="register-sahen" />
+        ) : (
+          <img src={img} alt="sa7en" className="register-sahen" />
+        )}
       </div>
 
     </div>
