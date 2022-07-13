@@ -27,7 +27,7 @@ class Controller {
                             .then(user => {
                                 (
                                     { id: user._id },
-                                    process.env.TOKEN_SCERET,
+                                    process.env.TOKEN_SECRET,
                                     { expiresIn: 3600 },
                                     (err) => {
                                         if (err) throw err;
@@ -67,12 +67,14 @@ class Controller {
 
                         Jwt.sign(
                             { id: user._id },
-                            process.env.TOKEN_SCERET,
+                            process.env.TOKEN_SECRET,
                             (err, token) => {
                                 if (err) throw err;
 
                                 res.header('auth-token', token).json({ user, token })
-                                res.json({
+                                .status(200)
+                                .json({
+                                    
                                     token,
                                     user: {
                                         id: user._id,

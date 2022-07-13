@@ -7,9 +7,11 @@ const CategorySchema = new Schema({
         required:true
     },
     image:{
-        type:String,
+        type:Array,
         required:true
-    }
+    },
+    extension: String,
+    destination: String
     
 }, {timestamps:true})
 

@@ -25,7 +25,7 @@ class Controller {
                         .then(admin => {
                             Jwt.sign(
                                 { id: admin._id },
-                                process.env.TOKEN_SCERET,
+                                process.env.TOKEN_SECRET,
                                 { expiresIn: 3600 },
                                 (err, token) => {
                                     if(err) throw err;
@@ -61,7 +61,7 @@ class Controller {
     
                         Jwt.sign(
                             { id: admin._id },
-                            process.env.TOKEN_SCERETY,
+                            process.env.TOKEN_SECRET,
                             { expiresIn: 3600 },
                             (err, token) => {
                                 if(err) throw err;
