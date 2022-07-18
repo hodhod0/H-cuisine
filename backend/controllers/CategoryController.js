@@ -1,36 +1,26 @@
 const Model = require("../models/CategoryModel")
-const fs = require('fs');
-const path = "public/images";
-const multer = require('multer');
 
 
 class Controller {
 
-    constructor() {
-        const storage = multer.diskStorage({
-            destination: (req, file, cb) => {
-                cb(null, path);
-            },
-            filename: (req, file, cb) => {
-                cb(null, `${Date.now()}-${file.originalname}`);
-            }
+    async post(req, res, next) {
+        const reqFiles = [];
+        const url = req.protocol + "://" + req.get("host");
+        for (var i = 0; i < req.files.length; i++) {
+          reqFiles.push(url + "/images/" + req.files[i].filename);
+        }
+    
+        console.log("category ", req.body);
+        let newCategory = new Model({
+            name: req.body.name,
+            image: reqFiles,
         });
-        this.upload = multer({ storage });
-    }
-
-    post(req, res, next) {
-        console.log("****", JSON.stringify(req.body))
-        let { filename: name, mimetype: image } = req.file || {};
-        //get the extension from the end of the filename (after last '.'),
-        // if the name doesn't exist then it's = ''
-        let extension = name ? name.split('.').pop() : '';
-        //create new model and save it
-        let doc = new Model({ name, image, extension, destination: 'images' });
-        doc.save((err, response) => {
-            if (err) return next(err);
-            res.status(200).send({ success: true, response });
+        newCategory.save({}, (error, result) => {
+          if (error) return next(error);
+          res.send(result);
+          console.log("res ", result);
         });
-    }
+      }
 
     getAll(req, res, next) {
         Model.find({}, (err, response) => {
@@ -46,14 +36,14 @@ class Controller {
         });
     }
  
-    post(req, res, next) {
-        let body = req.body;
-        let doc = new Model(body);
-        doc.save((err, response) => {
-            if (err) return next(err);
-            res.status(200).send({ success: true, response });
-        });
-    }
+    // post(req, res, next) {
+    //     let body = req.body;
+    //     let doc = new Model(body);
+    //     doc.save((err, response) => {
+    //         if (err) return next(err);
+    //         res.status(200).send({ success: true, response });
+    //     });
+    // }
     put(req, res, next) {
         let { id } = req.params;let body = req.body;
         Model.updateOne({ _id: id }, {

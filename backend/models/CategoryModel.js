@@ -10,8 +10,7 @@ const CategorySchema = new Schema({
         type:Array,
         required:true
     },
-    extension: String,
-    destination: String
+
     
 }, {timestamps:true})
 

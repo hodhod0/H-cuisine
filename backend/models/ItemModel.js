@@ -10,7 +10,12 @@ const ItemSchema = new Schema(
             type: String,
             required:true
         },
-        image:Array,
+        image:{
+           type: Array,
+           required:true
+        },
+
+
         
         price: {
             type: Number,
