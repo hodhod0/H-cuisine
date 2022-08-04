@@ -5,7 +5,7 @@ import axios from "../../api/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
-import img from "../../assets/images/sahen.png";
+import img from "../../assets/images/sa7en5.png";
 
 const Login = () => {
   toast.configure();
@@ -35,18 +35,18 @@ const Login = () => {
     const userData = {
       email: login.email,
       password: login.password,
-    };
+    }
     axios
       .post("http://localhost:2000/api/users/login", userData)
       .then((res) => {
         if (res.status === 200) {
-          toast.success("Login Successfully");
           setLogin({
             email: "",
             password: "",
           });
-          nav("/home");
+          toast.success("Login Successfully");
           localStorage.setItem("token", res.data.token);
+          nav("/home");
         }
       })
       .catch((err) => {
@@ -99,7 +99,7 @@ const Login = () => {
           </p>
 
           <form
-            onSubmit={() => handleSubmit()}
+            onSubmit={handleSubmit}
             className="form-login-input d-flex flex-column"
           >
             <input

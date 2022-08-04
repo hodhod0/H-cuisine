@@ -1,0 +1,25 @@
+.container-navbar{
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 84px 10px 80px;
+}
+.navbar-btn{
+    font-weight: bolder;
+    border-radius: 13px;
+    background-color: var(--primary);
+    outline: none;
+    cursor: pointer;
+    color: var(--white);
+    border: 1px solid var(--primary-op);
+    padding: 1px 11px;
+}
+
+.navbar-list-title{
+    padding-right: 25px;
+    margin: 0;
+}
+
+.list-nav {
+    align-items: center;
+    height: 50px;
+}

@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* .owl-nav {
+  display: block;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
+  top: calc(28%);
+  font-size: 50px;
+} */
+
+/* button.owl-prev {
+float: left;
+}
+button.owl-next {
+float: right;
+} */
+
+/* .owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {
+  display: block !important; 
+} */

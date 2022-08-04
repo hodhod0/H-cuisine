@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Register.css";
-import img from "../../assets/images/sahen.png";
+import img from "../../assets/images/sa7en5.png";
 
 const Register = () => {
   toast.configure();
@@ -110,7 +110,7 @@ const Register = () => {
             required
             onChange={handleChange}
             value={users.phone}
-            className='my-2 px-2 fs-5'
+            className='my-2 px-2 fs-5 phone'
 
           />
           <input

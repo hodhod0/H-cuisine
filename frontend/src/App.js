@@ -4,23 +4,34 @@ import React from "react";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
+import AboutUs from "./pages/aboutUs/AboutUs";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import Category from "./pages/category/Category";
+import Item from "./pages/item/Item";
 
 function App() {
+  const token = localStorage.getItem("token");
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        {localStorage.getItem("token") !== null ? (
-          <Route path="/home" element={<Home />} />
-        ) : (
-          <Route path="/login" element={<Login />} />
-        )}
-        <Route path="/login" element={<Login />} />
+    <>
+      <div className="blur"> </div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<ProtectedRoute token={token} />}>
+            <Route index path="/aboutus" element={<AboutUs />} />
+            <Route index path="/category" element={<Category />} />
+            <Route index path="/category/:id" element={<Item />} />
+          </Route>
+          <Route index element={<Home />} />
 
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/register" element={<Register />} />
+          {/* <Route path="/aboutus" element={<AboutUs />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
