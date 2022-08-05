@@ -54,6 +54,7 @@ class Controller {
     }
     delete(req, res, next) {
         let { id } = req.params;
+        console.log(id)
         Model.findByIdAndDelete({ _id: id }, (err, response) => {
             if (err) return next(err);
             res.status(200).send({ success: true, response });

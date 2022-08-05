@@ -25,7 +25,12 @@ const ItemSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "Category",
             required: true
-        }
+        },
+        order: [{
+            type: Schema.Types.ObjectId,
+            ref: "Order",
+            required: true
+        }]
     },
     {
         collection: "items",

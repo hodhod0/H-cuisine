@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-var controller = require("../controllers/itemController");
+const express = require("express")
+router = express.Router();
+const controller = require("../controllers/HomeController")
 const { authenticate } = require("../middelwar/auth");
 var multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
@@ -31,16 +31,12 @@ const storage = multer.diskStorage({
     },
   });
 
-
-router.get("/", controller.getAllItems);
-// router.post("/", controller.addItem);
-router.get("/Id/:id", controller.getItemById);
-router.put("/:id", controller.updateItem);
-router.delete("/:id", controller.deleteItem);
-router.get("/bycategory/:id", controller.getItemByCategory)
+router.get("/",controller.getAll)
+router.get("/:id",controller.getbyId)
+router.delete("/:id",controller.delete)
+router.put("/:id",controller.put)
+// router.post("/",controller.post)
 router.post("/upload", upload.array("images", 10),controller.post);
-
-
 
 
 

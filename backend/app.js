@@ -19,6 +19,7 @@ var categoryRouter = require("./routes/Category")
 var itemRouter = require("./routes/Item")
 var adminRouter = require("./routes/Admin")
 var orderItemRouter = require("./routes/OrderItem")
+var homeRouter = require("./routes/Home")
 
 //Connection to mongoDB
 // conncet to mongodb
@@ -67,6 +68,7 @@ app.use("/api/category",categoryRouter)
 app.use("/api/item",itemRouter)
 app.use("/api/admin",adminRouter)
 app.use("/api/orderitem",orderItemRouter)
+app.use("/api/home",homeRouter)
 
 // Create error
 app.use(function (req, res, next) {

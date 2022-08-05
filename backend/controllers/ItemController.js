@@ -29,7 +29,7 @@ class Controller{
 
         // Get All Currencies
         getAllItems(req,res,next){
-            Item.find().populate("category").exec(function (err, result) {
+          Model.find().populate("category").exec(function (err, result) {
               if (err) return next(err);
                 res.send(result);
               });
@@ -38,7 +38,14 @@ class Controller{
         
         getItemById = (req, res, next) => {
             let { id } = req.params || {};
-            Item.findOne({ _id: id }, (err, response) => {
+            Model.findOne({ _id: id }, (err, response) => {
+              if (err) return next(err);
+              res.status(200).send({ success: true, response });
+            });
+          };
+          getItemByCategory = (req, res, next) => {
+            let { id } = req.params || {};
+            Model.find({ category: id }, (err, response) => {
               if (err) return next(err);
               res.status(200).send({ success: true, response });
             });
@@ -58,7 +65,7 @@ class Controller{
         updateItem = (req,res,next)=>{
             let {id} = req.params || {};
             let body = req.body;
-            Item.updateOne({_id:id},{$set:body},(err,response)=>{
+            Model.updateOne({_id:id},{$set:body},(err,response)=>{
                 if(err) return next(err);
                 res.status(200).send({success:true,response});
             });
@@ -67,7 +74,7 @@ class Controller{
         // // Delete Currrency
         deleteItem = (req,res,next)=>{
             let {id} = req.params || {};
-             Item.findByIdAndDelete({_id:id},(err,response)=>{
+            Model.findByIdAndDelete({_id:id},(err,response)=>{
                 if(err) return next(err);
                 res.status(200).send({success:true,response});
             });

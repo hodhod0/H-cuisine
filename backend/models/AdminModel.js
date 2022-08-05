@@ -4,19 +4,38 @@ const Schema = mongoose.Schema;
 const AdminSchema = new Schema({
     username:{
         type:String,
-        required:true
+        required:false
     },
     email:{
         type:String,
-        required:true
+        required:false
     },
     password:{
         type:String,
-        required:true
+        required:false
     },
     isAdmin:{
         type:Boolean,
         default:true
+    },
+    facebook:{
+        type:String,
+        required:false
+    },
+    aboutus:{
+        type:String,
+        required:false
+
+    },
+    instagram:{
+        type:String,
+        required:false
+
+    },
+    location:{
+        type:String,
+        required:false
+
     }
 
 })

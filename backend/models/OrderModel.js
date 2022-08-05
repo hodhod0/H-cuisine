@@ -12,7 +12,7 @@ const OrderSchema = new Schema({
     },
     address:{
         type:String,
-        required
+        required:true
     },
     type:{
         type:String,
@@ -21,7 +21,12 @@ const OrderSchema = new Schema({
     status:{
         type:Boolean,
         required:true
-    }
+    },
+    item: [{
+        type: Schema.Types.ObjectId,
+        ref: "Item",
+        required: true
+    }]
 },{timestamps:true})
 
 const Order = mongoose.model("Order",OrderSchema )
