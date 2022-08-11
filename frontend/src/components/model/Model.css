@@ -1,0 +1,108 @@
+.pop-up-list {
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--primary);
+}
+.container-popup {
+  margin: 25px 20px 25px 20px;
+}
+.scrollable-container {
+  overflow: auto;
+  height: 250px;
+}
+.pop-uplist-input {
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.modal-dialog {
+  width: 60vw;
+  max-width: 45vw;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: pink;
+  border-radius: 10px;
+}
+.tbl {
+  position: relative;
+}
+
+.tbl tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  padding: 25px 0 !important;
+  border-bottom: 1px solid pink;
+  text-align: center;
+}
+.tbl {
+  overflow: auto;
+}
+.tbl thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.total {
+  text-align: right;
+  width: fit-content;
+  float: right;
+  border: 1px solid pink;
+  padding: 4px 30px;
+  margin-top: 15px;
+}
+.footer-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.purchase {
+  float: right;
+  background-color: pink;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 3px #00000070;
+}
+/* Just common table stuff. Really. */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  padding: 8px 16px;
+}
+th {
+  background: #eee;
+}
+
+.check {
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-content {
+  width: 106% !important;
+}
+.img-price {
+  margin-right: 16px;
+}
+.icon-x {
+  margin-left: -6px;
+  cursor: pointer;
+}
+.price {
+  margin-left: 30px;
+}

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import NavBar from "../../components/navbar/NavBar";
+import Model from "../../components/model/Model";
 
 const Category = () => {
   const [dataC, setDataC] = useState([]);

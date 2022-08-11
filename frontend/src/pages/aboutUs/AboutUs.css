@@ -7,7 +7,7 @@
     ),
     url(../../assets//images/backg.png); */
       /* background-color: rgba(107, 105, 105, 0.4); */
-      transform: translateX(20px);
+      /* transform: translateX(20px); */
 
 }
 
@@ -60,6 +60,7 @@
   padding-left: 14px;
   border: 1.5px solid lightcoral;
   outline: none;
+  font-size: larger;
 }
 
 .wrapper {
@@ -87,4 +88,8 @@
 .social-media-title {
   color: var(--white);
   font-weight: bolder;
+}
+textarea{
+  font-size: larger;
+
 }

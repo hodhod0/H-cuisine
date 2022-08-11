@@ -1,0 +1,45 @@
+.item-container {
+  display: block;
+  justify-content: space-around;
+}
+
+/* .bg {
+  background-image: url("../../assets/images/pink-donuts.png");
+  background-repeat: no-repeat;
+  background-position: -50% -50%;
+} */
+.plate {
+  display: inline-block;
+  margin-left: 50px;
+}
+.item-details {
+  float: right;
+  margin-right: 104px;
+  text-align: center;
+  width: 400px;
+  background: #ffc0cb90;
+  color: black;
+  border-radius: 15px;
+  border: 3px solid pink;
+  min-height: 150px;
+}
+.add-to-cart {
+  float: right;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+.add-to-cart img{
+  width: 30px;
+  margin-right: 10px;
+
+}
+.item-name {
+  font-weight: 900;
+  font-size: 26px;
+}
+
+.item-img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}

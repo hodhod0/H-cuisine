@@ -1,0 +1,18 @@
+.discription-home {
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  width: 450px;
+  padding: 10px;
+  font-size: x-large;
+  color: #fff;
+  background-color: var(--primary-op);
+  margin-top: 15px;
+  line-height: 38px;
+}
+.container-home {
+  justify-content: space-around;
+}
+.brief-home {
+  margin: 20px 0px 20px 140px;
+  font-weight: 600;
+}
