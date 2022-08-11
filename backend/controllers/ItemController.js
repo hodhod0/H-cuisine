@@ -1,8 +1,6 @@
+const Model = require("../models/ItemModel");
 
-const Model = require("../models/ItemModel")
-
-class Controller{
-
+class Controller {
   async post(req, res, next) {
     const reqFiles = [];
     const url = req.protocol + "://" + req.get("host");
@@ -12,73 +10,80 @@ class Controller{
 
     console.log("category ", req.body);
     let newItem = new Model({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        image: reqFiles,
-        category: req.body.category,
-
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      image: reqFiles,
+      category: req.body.category,
     });
-    newItem.save({}, (error, result) => {
+    newItem.save({}, (error, response) => {
       if (error) return next(error);
-      res.send(result);
-      console.log("res ", result);
+      res.send(response);
+      console.log("res ", response);
     });
   }
 
+  // Get All Currencies
+  getAllItems(req, res, next) {
+    Model.find()
+      .populate("category")
+      .exec(function (err, response) {
+        if (err) return next(err);
+        res.send(response);
+      });
+  }
+  // Get Currency By Id
 
-        // Get All Currencies
-        getAllItems(req,res,next){
-          Model.find().populate("category").exec(function (err, result) {
-              if (err) return next(err);
-                res.send(result);
-              });
-            }
-        // Get Currency By Id
-        
-        getItemById = (req, res, next) => {
-            let { id } = req.params || {};
-            Model.findOne({ _id: id }, (err, response) => {
-              if (err) return next(err);
-              res.status(200).send({ success: true, response });
-            });
-          };
-          getItemByCategory = (req, res, next) => {
-            let { id } = req.params || {};
-            Model.find({ category: id }, (err, response) => {
-              if (err) return next(err);
-              res.status(200).send({ success: true, response });
-            });
-          };
+  getItemById = (req, res, next) => {
+    let { id } = req.params || {};
+    Model.findOne({ _id: id }, (err, response) => {
+      if (err) return next(err);
+      res.status(200).send({ success: true, response });
+    });
+  };
+  getItemsByCategoryId = (req, res, next) => {
+    let { id } = req.params || {};
+    Model.find({ category: id }, (err, response) => {
+      if (err) return next(err);
+      res.status(200).send({ success: true, response });
+    });
+  };
+  getItemByCategory = (req, res, next) => {
+    let { id } = req.params || {};
+    Model.find({ category: id }, (err, response) => {
+      if (err) return next(err);
+      res.status(200).send({ success: true, response });
+    });
+  };
 
-        // Add New Currency
-        // addItem = async(req,res,next)=>{
-        //     let body = req.body;
-        //     let doc = await new Item(body);
-        //     doc.save((err,response)=>{
-        //         if(err) return next(err);
-        //         res.status(200).send({success:true,response});
-        //     });
-        // }
+  // Add New Currency
+  // addItem = async(req,res,next)=>{
+  //     let body = req.body;
+  //     let doc = await new Item(body);
+  //     doc.save((err,response)=>{
+  //         if(err) return next(err);
+  //         res.status(200).send({success:true,response});
+  //     });
+  // }
 
-        // Edit The currency
-        updateItem = (req,res,next)=>{
-            let {id} = req.params || {};
-            let body = req.body;
-            Model.updateOne({_id:id},{$set:body},(err,response)=>{
-                if(err) return next(err);
-                res.status(200).send({success:true,response});
-            });
-        }
+  // Edit The currency
+  updateItem = (req, res, next) => {
+    let { id } = req.params || {};
+    let body = req.body;
+    Model.updateOne({ _id: id }, { $set: body }, (err, response) => {
+      if (err) return next(err);
+      res.status(200).send({ success: true, response });
+    });
+  };
 
-        // // Delete Currrency
-        deleteItem = (req,res,next)=>{
-            let {id} = req.params || {};
-            Model.findByIdAndDelete({_id:id},(err,response)=>{
-                if(err) return next(err);
-                res.status(200).send({success:true,response});
-            });
-        }
+  // // Delete Currrency
+  deleteItem = (req, res, next) => {
+    let { id } = req.params || {};
+    Model.findByIdAndDelete({ _id: id }, (err, response) => {
+      if (err) return next(err);
+      res.status(200).send({ success: true, response });
+    });
+  };
 }
 const controller = new Controller();
 module.exports = controller;
