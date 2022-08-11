@@ -1,0 +1,8 @@
+.add-category {
+  border: 1px solid var(--white-point6);
+  text-align: center;
+  width: 473px;
+  align-self: center;
+  border-radius: 15px;
+  margin-top: 10px;
+}
