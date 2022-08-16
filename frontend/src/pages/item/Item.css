@@ -1,20 +1,18 @@
-.item-container {
-  display: block;
-  justify-content: space-around;
-}
-
 /* .bg {
   background-image: url("../../assets/images/pink-donuts.png");
   background-repeat: no-repeat;
   background-position: -50% -50%;
 } */
 .plate {
-  display: inline-block;
-  margin-left: 50px;
+  margin-left: 75px;
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+.item-name{
+  margin-top: 23px;
 }
 .item-details {
-  float: right;
-  margin-right: 104px;
   text-align: center;
   width: 400px;
   background: #ffc0cb90;
@@ -22,24 +20,63 @@
   border-radius: 15px;
   border: 3px solid pink;
   min-height: 150px;
+  right: 10%;
+  position: absolute;
 }
+.item-description{
+  text-align: left;
+  margin: 14px;
+  font-size: x-large;
+}
+
 .add-to-cart {
   float: right;
   margin: 0 10px 10px 0;
   cursor: pointer;
+  margin-bottom: 22px;
+
 }
-.add-to-cart img{
+.add-to-cart img {
   width: 30px;
   margin-right: 10px;
-
 }
 .item-name {
   font-weight: 900;
-  font-size: 26px;
+  font-size: 30px;
+}
+.m0 {
+  margin: 0;
+}
+.item-img {
+  width: 100%;
+  height: 80%;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: all 1s ease;
+  position: absolute;
+  left: 10%;
 }
 
-.item-img {
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
+.item-img.animate-l-r {
+  animation: animate-l-r 0.6s 1 linear;
+}
+@keyframes animate-l-r {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 10%;
+  }
+}
+
+.add-to-card-price {
+  padding: 4px 14px 4px 14px;
+  border: 1px solid var(--primary-op);
+  border-radius: 10px;
+  background: wheat;
+  font-weight: bolder;
+  color: var(--white);
+  background-color: var(--primary);
+  font-size: small;
+  box-shadow: 0px 6px 17px -7px rgb(0 0 0 / 83%);
 }

@@ -10,19 +10,19 @@ import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Category from "./pages/category/Category";
 import Item from "./pages/item/Item";
 import Model from "./components/model/Model";
+import Order from "./pages/order/Order";
 
 function App() {
   const token = localStorage.getItem("token");
   return (
     <>
-
-    <div className="blur"></div>
-      <div className="bg">
+      <div className="bg blur">
         <BrowserRouter>
           <Routes>
             <Route element={<ProtectedRoute token={token} />}>
               <Route index path="/aboutus" element={<AboutUs />} />
               <Route index path="/category" element={<Category />} />
+              <Route index path="/order" element={<Order/>}/>
               <Route index path="/category/:id" element={<Item />} />
             </Route>
             <Route index element={<Home />} />

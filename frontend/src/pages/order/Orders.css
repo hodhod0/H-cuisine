@@ -1,0 +1,31 @@
+.container-popup-order{
+    max-width: 60%;
+    width: -webkit-fill-available;
+    background: white;
+    border: 1.5px solid pink;
+    border-radius: 15px;
+    padding: 15px;
+
+}
+.form-order{
+    width: 32%;
+    margin-left: 35px;
+    background: white;
+    border: 1.5px solid pink;
+    border-radius: 15px;
+    padding: 15px;
+
+}
+.container-order{
+    margin-top: 35px;
+    margin-left: 35px;
+}
+.button-order{
+    background-color: var(--primary);
+    outline: none;
+
+}
+.button-order:hover{
+    background-color: var(--primary-op);
+    outline: none;
+}

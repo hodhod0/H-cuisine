@@ -1,84 +1,11 @@
-import React from "react";
-import emailjs from "emailjs-com";
-import "./AboutUs.css";
-import NavBar from "../../components/navbar/NavBar";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
-import Footer from "../../components/footer/Footer";
+import React from 'react'
+import "./Footer.css"
 
-const AboutUs = () => {
-  toast.configure();
-
-  const onSubimt = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_olikooe",
-        "template_nnhk1ki",
-        e.target,
-        "user_oGhahEeNecD9nmpPzf3Q4"
-      )
-      .then((res) => {
-        console.log(res);
-        toast.success("Message Successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Something went wrong while registering");
-      });
-  };
+const Footer = () => {
   return (
-    <>
-      <div className="container-aboutus">
-        <NavBar />
-        <div className="text-center aboutus-text">
-          <p className="">
-            H-Cuisine is a small family business that started one year ago and
-            grow-up fast. Our kitchen deliver. a special taste and high quality.
-            We made different plates and dishes from around the world. You can.
-            find all the ingredients with each plate. Have a good day and enjoy
-            our tasty food :)
-          </p>
-        </div>
-        <form onSubmit={onSubimt} className="col-8 contactus">
-          <div className="inner-container">
-            <div className="text-center contactus-title">Send us a message</div>
-            <div className="left-container d-flex justify-content-between mb-3">
-              <input
-                type="text"
-                className="left-input empty-content col-5 "
-                name="name"
-                required
-                placeholder="Full Name..."
-              />
-              <input
-                type="text"
-                className="left-input empty-content col-5"
-                name="email"
-                required
-                placeholder="Email..."
-              />
-            </div>
-            <div className="right-container bg-white p-3">
-              <textarea
-                className="empty-content w-100"
-                name="message"
-                cols="30"
-                rows="10"
-                required
-                placeholder="Type your message..."
-              ></textarea>
-
-              <input
-                type="submit"
-                value="Send"
-                className="d-flex ms-auto contactus-send"
-              />
-            </div>
-          </div>
-          <div className="socail-media">
-            <div className="socail-media-icone mt-3">
+    <div className='footer'>
+         <div className="d-flex footer-inner">
+            <div className="socail-media-icone ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="22"
@@ -90,7 +17,7 @@ const AboutUs = () => {
               >
                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
               </svg>
-              <p className="social-media-title">H-cuisne</p>
+              <p className="social-media-title ">H-cuisne</p>
             </div>
             <div className="socail-media-icone ">
               <a href="https://instagram.com/h_cuizine?igshid=YmMyMTA2M2Y=">
@@ -120,7 +47,7 @@ const AboutUs = () => {
               >
                 <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
               </svg>
-              <p className="social-media-title">+ 961 185161</p>
+              <p className="social-media-title">+ 961 1851618</p>
             </div>
             <div className="socail-media-icone ">
               <svg
@@ -138,11 +65,8 @@ const AboutUs = () => {
               <p className="social-media-title">Open in map</p>
             </div>
           </div>
-        </form>
-      </div>
-      <Footer/>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default AboutUs;
+export default Footer

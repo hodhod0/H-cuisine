@@ -8,6 +8,7 @@ import "./Item.css";
 import pinkDonuts from "../../assets/images/pink-donuts.png";
 import shop from "../../assets/images/add-to-cart-svgrepo-com.png";
 import { CartList } from "../../context/cartList";
+import Footer from "../../components/footer/Footer";
 const Item = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [cart, setCart] = useState(CartList);
@@ -16,31 +17,62 @@ const Item = () => {
     const id = item._id;
     const index = temp.findIndex((itm) => itm._id === id);
     if (index > -1) {
-      temp[index].quatity = temp[index].quatity + 1;
+      temp[index].quantity = temp[index].quantity + 1;
     } else {
-      item.quatity = 1;
+      item.quantity = 1;
+      item.id = item._id;
       temp.push(item);
     }
     setCart(temp);
   };
+  useEffect(() => {
+    const plate = document.getElementById("plate");
+    const itemDesc = document.getElementById("item-desc");
+    if (plate) {
+      plate.classList.add("animate-l-r");
+      // itemDesc.classList.add("animate-r-l");
+      setTimeout(() => {
+        plate.classList.remove("animate-l-r");
+        // itemDesc.classList.remove("animate-r-l");
+      }, 1000);
+    }
+  }, [selectedItem]);
   return (
     <div>
       <NavBar />
       <CardItem selectedItem={(item) => setSelectedItem(item)} />
       {selectedItem && (
-        <div className="item-container">
-          <div className="plate">
-            {<img src={selectedItem.image} alt="" className="item-img" />}
+        <div className="row m0 mt-5">
+          <div className="col-6">
+            {" "}
+            <div className="plate">
+              {
+                <img
+                  src={selectedItem.image}
+                  alt=""
+                  id="plate"
+                  className="item-img"
+                />
+              }
+            </div>
           </div>
-          <div className="item-details">
-            <div className="item-name">{selectedItem.name}</div>
-            <div className="item-description">{selectedItem.description}</div>
-            <div
-              className="add-to-cart"
-              onClick={() => addItemToCart(selectedItem)}
-            >
-              <img src={shop} />
-              {selectedItem.price} $
+          <div className="col-6">
+            <div className="position-relative">
+              <div className="item-details" id="item-desc">
+                <div className="item-name">{selectedItem.name}</div>
+                <div className="item-description">
+                  {selectedItem.description}
+                </div>
+                <div
+                  className="add-to-cart d-flex"
+                  onClick={() => addItemToCart(selectedItem)}
+                >
+                  <img src={shop} />
+                  <div className="add-to-card-price">
+                    {selectedItem.price} $
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -49,6 +81,7 @@ const Item = () => {
       <div>
         <AddCrad trigger={false}></AddCrad>
       </div>
+      {/* <Footer/> */}
     </div>
   );
 };

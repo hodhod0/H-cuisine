@@ -68,7 +68,7 @@ tr {
 }
 .purchase {
   float: right;
-  background-color: pink;
+  background-color: var(--primary);
   color: white;
   cursor: pointer;
   padding: 5px 15px;
@@ -92,6 +92,7 @@ th {
   border: 1px solid var(--primary);
   border-radius: 4px;
   cursor: pointer;
+  background-color: var(--primary);
 }
 .modal-content {
   width: 106% !important;
@@ -105,4 +106,20 @@ th {
 }
 .price {
   margin-left: 30px;
+}
+
+.cart.scale {
+  animation: scale 1s 1 linear;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

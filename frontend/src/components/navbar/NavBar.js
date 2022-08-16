@@ -1,13 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import img from "../../assets/images/log2o.png";
 import "./NavBar.css";
 import Model from "../model/Model";
 
 const NavBar = () => {
-  return (
+  const nav = useNavigate();
 
+  const logout = () => {
+    localStorage.clear();
+    nav("/login");
+  };
+  return (
     <div className="d-flex container-navbar">
       <div>
         <img src={img} alt="logo" style={{ width: 100, height: 100 }} />
@@ -26,11 +31,11 @@ const NavBar = () => {
           About us
         </Link>
 
-        <button className="navbar-btn">logout</button>
+        <button className="navbar-btn" onClick={() => logout()}>
+          logout
+        </button>
         <div>
-          
-              <Model />
-
+          <Model />
         </div>
       </div>
     </div>

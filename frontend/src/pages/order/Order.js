@@ -1,18 +1,17 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import "./Model.css";
-import img from "../../assets/images/123.png";
-import shop from "../../assets/images/add-to-cart-svgrepo-com.png";
+import NavBar from "../../components/navbar/NavBar";
 import { CartList } from "../../context/cartList";
-import { Link } from "react-router-dom";
-const Model = () => {
-  const [show, setShow] = useState(false);
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Orders.css";
+
+const Order = () => {
+  toast.configure();
+
+  let counter = 0;
   const [total, setTotal] = useState(0);
   const [cartList, setCartList] = useState(CartList);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const incDec = (item, value) => {
     const temp = cartList;
     const index = temp.findIndex((itm) => itm._id === item._id);
@@ -54,21 +53,47 @@ const Model = () => {
   }, [total]);
   useEffect(() => {
     calculateTotal();
-  }, [cartList, show]);
+  }, [cartList]);
+  useEffect(() => {
+    console.log(CartList);
+  }, []);
+
+  const orderNow = () => {
+    const address = document.getElementById("address").value;
+    const name = document.getElementById("name").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const date = document.getElementById("date").value;
+    const user = { address, name, phoneNumber, date };
+    let u = localStorage.getItem("user");
+    if (u) {
+      u = JSON.parse(u);
+    }
+    axios
+      .post(
+        "http://localhost:2000/api/order",
+        {
+          user: u._id,
+          item: cartList,
+          totalPrice: total,
+        },
+        {}
+        )
+        
+        .then((res) => {
+        toast.success("Successfully");
+        getOrder();
+      });
+  };
+  const getOrder = () => {
+    axios.get("http://localhost:2000/api/order", {}, {}).then((res) => {
+      console.log(res);
+    });
+  };
   return (
     <>
-      <img
-        onClick={handleShow}
-        src={shop}
-        alt="shop"
-        style={{ cursor: "pointer", marginLeft: "50px", height: "36px" }}
-      />
-      <Modal show={show} onHide={handleClose} className="container-popup ">
-        {/* <Modal.Header closeButton> */}
-        {/* <Modal.Title>Modal heading</Modal.Title> */}
-        {/* </Modal.Header> */}
-        {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
-        <div className="container-popup">
+      <NavBar />
+      <div className=" d-flex container-order">
+        <div className="container-popup-order">
           <div className="scrollable-container">
             <table className="tbl">
               <thead>
@@ -169,14 +194,70 @@ const Model = () => {
           </div>
           <div className="footer-modal">
             <div className="total">Total: {total} $</div>
-            <div className="purchase">
-              <Link to="/order">Purchase</Link>
-            </div>
           </div>
         </div>
-      </Modal>
+        <form className="form-order">
+          <div className="">
+            <div className="col">
+              <div className="group-control">
+                <label>Name</label>
+                <input
+                  title="Name"
+                  type="text"
+                  id="name"
+                  className="form-control"
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="group-control">
+                <label>Phone Number</label>
+                <input
+                  title="Phone Number"
+                  type="Number"
+                  className="form-control"
+                  id="phoneNumber"
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="group-control">
+                <label>Date</label>
+                <input
+                  title="date"
+                  type="date"
+                  id="date"
+                  className="form-control"
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="group-control">
+                <label>Address</label>
+                <textarea
+                  title="Address"
+                  type="text"
+                  id="address"
+                  className="form-control"
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="group-control">
+                <button
+                  type="button"
+                  onClick={orderNow}
+                  className="btn button-order my-3"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </>
   );
 };
 
-export default Model;
+export default Order;

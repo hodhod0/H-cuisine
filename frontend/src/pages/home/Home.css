@@ -1,18 +1,25 @@
 .discription-home {
   border: 1px solid var(--primary);
   border-radius: 15px;
-  width: 450px;
-  padding: 10px;
+  width: 500px;
+  padding: 15px;
   font-size: x-large;
   color: #fff;
   background-color: var(--primary-op);
-  margin-top: 15px;
   line-height: 38px;
+  padding-top: 20px;
+  letter-spacing: 1px;
+  
 }
 .container-home {
   justify-content: space-around;
+  margin-top: 15px;
 }
 .brief-home {
-  margin: 20px 0px 20px 140px;
   font-weight: 600;
+  margin-left: 92px;
+}
+
+.home-image-brief{
+  border-radius: 15px;
 }

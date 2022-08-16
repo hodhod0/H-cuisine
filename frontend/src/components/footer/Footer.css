@@ -1,0 +1,14 @@
+.footer{
+    background-color: var(--primary);
+}
+.footer-inner{
+    justify-content: space-around;
+}
+.social-media-title{
+    
+    margin: 0.5rem;
+}
+.icon{
+    margin: 0.5rem;
+
+}

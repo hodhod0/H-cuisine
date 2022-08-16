@@ -35,7 +35,7 @@ const Login = () => {
     const userData = {
       email: login.email,
       password: login.password,
-    }
+    };
     axios
       .post("http://localhost:2000/api/users/login", userData)
       .then((res) => {
@@ -46,6 +46,7 @@ const Login = () => {
           });
           toast.success("Login Successfully");
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
           nav("/home");
         }
       })
@@ -125,7 +126,12 @@ const Login = () => {
               Log in
             </button>
           </form>
-          <p className="mt-3 mb-0 login-return" onClick={() => nav("/register")}>Register</p>
+          <p
+            className="mt-3 mb-0 login-return"
+            onClick={() => nav("/register")}
+          >
+            Register
+          </p>
         </div>
         <p className="position-absolute fs-2 have-fun text-center text-white">
           Have Fun :)

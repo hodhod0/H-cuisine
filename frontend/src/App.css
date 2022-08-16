@@ -12,7 +12,9 @@
   box-sizing: border-box;
   font-family: inkfree;
 }
-
+body{
+  overflow-x: hidden;
+}
 :root {
   --primary: #f68e9a;
   --primary-op: rgba(246, 142, 154, 0.7);
@@ -61,14 +63,9 @@
   font-family: var(--fontFamily);
 }
 
-.bg {
-  background-image: url("./assets/images/backg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  overflow: hidden;
-}
+/* .bg * {
+  z-index: 10;
+} */
 
 a {
   text-decoration: none;
@@ -81,5 +78,13 @@ a:hover {
 
 .home-image {
   width: 100%;
-  height: 300px;
+  margin: 20px 0px 50px;
+}
+
+.blur {
+  background-image: url("./assets/images/blur.png"),url("./assets/images/bac.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  min-height: 100vh;
 }

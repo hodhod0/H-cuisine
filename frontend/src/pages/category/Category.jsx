@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import NavBar from "../../components/navbar/NavBar";
 import Model from "../../components/model/Model";
+import Footer from "../../components/footer/Footer";
 
 const Category = () => {
   const [dataC, setDataC] = useState([]);
@@ -23,15 +24,16 @@ const Category = () => {
       <NavBar />
       <div
         style={{
-          display: "flex",
+          minHeight: '70vh',
+          textAlign: '-webkit-center',
           padding: 10,
           margin: 10,
-          justifyContent: "space-evenly",
         }}
       >
         <CardCategory />
         {/* <CardItem /> */}
       </div>
+      <Footer/>
     </>
   );
 };

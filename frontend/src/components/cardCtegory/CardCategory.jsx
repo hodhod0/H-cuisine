@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import nextArrow from "../../assets/images/next-arrow.png";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -17,16 +17,7 @@ function SampleNextArrow(props) {
       style={{ display: "block" }}
       onClick={onClick}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="40"
-        height="40"
-        fill="currentColor"
-        className="bi bi-caret-right"
-        viewBox="0 0 16 16"
-      >
-        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-      </svg>
+      <img src={nextArrow} className="arrow" alt="next arrow" />
     </div>
   );
 }
@@ -39,16 +30,12 @@ function SamplePrevArrow(props) {
       style={{ display: "block" }}
       onClick={onClick}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="40"
-        height="40"
-        fill="currentColor"
-        className="bi bi-caret-left"
-        viewBox="0 0 16 16"
-      >
-        <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
-      </svg>
+      <img
+        src={nextArrow}
+        alt="next arrow"
+        width={30}
+        className="previous arrow"
+      />
     </div>
   );
 }
@@ -57,11 +44,10 @@ const CardCategory = () => {
   const [data, setData] = useState([]);
 
   const settings = {
-    className: "center  py-3 slider-wrapper",
+    className: " center  slider-wrapper",
     centerMode: false,
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
+    slidesToShow: 4,
     speed: 500,
     arrow: true,
     nextArrow: <SampleNextArrow />,
@@ -70,22 +56,22 @@ const CardCategory = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-        }
+          slidesToShow: 4,
+        },
       },
       {
         breakpoint: 920,
         settings: {
           slidesToShow: 2,
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -112,7 +98,7 @@ const CardCategory = () => {
                   <Link to={"/category/" + item._id}>
                     <img
                       src={item.image}
-                      alt=""
+                      alt="image"
                       className="card-category-img"
                     />
 
