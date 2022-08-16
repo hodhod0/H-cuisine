@@ -5,7 +5,7 @@ const { authenticate } = require("../middelwar/auth");
 
 router.post("/", controller.createOrder);
 router.get("/", controller.getOrder);
-// router.get("/:id",controller.get);
+router.get("/:id",controller.getOrderById);
 // router.delete("/:id", controller.delete);
 
 module.exports = router;

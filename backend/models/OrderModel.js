@@ -27,15 +27,15 @@ const OrderSchema = new Schema(
       {
         id: { type: Schema.Types.ObjectId, ref: "Item", required: true },
         quantity: { type: Number, required: true },
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        image:[ { type: Array, required: false }]
       },
     ],
-    user: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
-    ],
+    user: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
