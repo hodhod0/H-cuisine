@@ -11,6 +11,7 @@ import Model from "../../component/model/Model";
 import AddItem from "../../component/categoryCrud/AddItem";
 import Button from "react-bootstrap/Button";
 import DeleteItem from "../../component/categoryCrud/DeleteItem";
+import UpdateItem from "../../component/categoryCrud/UpdateItem";
 
 export const Item = () => {
   const [data, setData] = useState([]);
@@ -71,6 +72,14 @@ export const Item = () => {
           refreshData={refreshData}
           id={itemIdToDelete}
       />
+      <UpdateItem
+         openModal={updateModalVisible}
+         // setVisible={setUpdateModalVisible}
+         onClose={(event) => setUpdateModalVisible(event)}
+ 
+            refreshData={refreshData}
+            id={itemIdToDelete}
+      />
       <SideBarAdmin />
       <div className="d-flex justify-content-between w-75 pt-5 pb-3 px-1 mx-auto samir">
         <h2>Item</h2>
@@ -109,7 +118,7 @@ export const Item = () => {
                       />
                     </td>
                     <td className="align-middle">{item.name}</td>
-                    <td className="align-middle">{item.description}</td>
+                    <td className="align-middle description-width">{item.description}</td>
                     <td className="align-middle">{item.price}</td>
 
                     <td className="align-middle">

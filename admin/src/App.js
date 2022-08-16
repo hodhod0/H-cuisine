@@ -13,6 +13,7 @@ import Category from "./pages/category/Category";
 import SideBarAdmin from "./component/sideBarAdimn/SideBarAdmin";
 import { Item } from "./pages/item/Item";
 import User from "./pages/user/User";
+import Orders from "./pages/orders/Orders";
 
 function App() {
   const token = localStorage.getItem("token", "isAdmin");
@@ -30,9 +31,10 @@ function App() {
             <Route path="dashboard" element={<Dashboard />}>
               <Route path="category" element={<Category />} />
               <Route path="category/:id" element={<Item />} />
-              <Route path="users" element={<User/>}/>
+              <Route path="users" element={<User />} />
+              <Route path="orders" element={<Orders />} />
 
-              <Route path="home" element={<Home/>} />
+              <Route path="home" element={<Home />} />
             </Route>
           </Route>
 

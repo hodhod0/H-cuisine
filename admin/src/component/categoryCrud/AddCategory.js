@@ -5,6 +5,8 @@ import "./categoryCurd.css";
 import swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddCategory = (props) => {
   const [name, setName] = useState();
@@ -20,6 +22,8 @@ const AddCategory = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    toast.configure();
+
     const data = new FormData();
     data.append("name", name);
     data.append("images", file);
@@ -29,6 +33,7 @@ const AddCategory = (props) => {
       .then((res) => {
         onClose(false);
         appendNew(res);
+        toast.success("Added Successfully");
         console.log(res);
       });
   };

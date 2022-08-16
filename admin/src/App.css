@@ -165,3 +165,14 @@ a {
 .delete {
   background-color: var(--error);
 }
+
+.description-width{
+  max-width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden ;
+  white-space: nowrap;
+}
+
+.order-model{
+  width: 100%;
+}

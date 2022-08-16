@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import TocIcon from '@mui/icons-material/Toc';
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
@@ -101,6 +102,30 @@ const SideBarAdmin = () => {
               <span className="ms-3 list-title">Category</span>
             </li>
           </a>
+          <a
+            style={{
+              backgroundColor: "var(--buttonhover1)",
+              color: "var(--textcolor1)",
+            }}
+            // style={({ isActive }) =>
+            //   isActive
+            //     ? {
+            //         backgroundColor: "var(--buttonhover1)",
+            //         color: "var(--textcolor1)",
+            //       }
+            //     : { backgroundColor: "transparent" }
+            // }
+            href="/dashboard/orders"
+          >
+            <li
+              data-aos-duration="1500"
+              data-aos="fade-right"
+              style={{ backgroundColor: "inherit" }}
+            >
+              <TocIcon className="icon" />
+              <span className="ms-3 list-title">Orders</span>
+            </li>
+          </a>
 
           <a
             style={{
@@ -126,6 +151,7 @@ const SideBarAdmin = () => {
               <span className="ms-3 list-title">Logout</span>
             </li>
           </a>
+         
         </ul>
 
         {/* <NavLink to='/'  >

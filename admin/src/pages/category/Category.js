@@ -29,6 +29,8 @@ const Category = () => {
   // }, [])
 
   const handleOpenAddModal = () => setAddModalVisible(true);
+  const handleOpenUpdateModal = () => setUpdateModalVisible(true);
+
 
   const refreshData = (id) => {
     const newdata = data.filter((x) => {
@@ -84,8 +86,10 @@ const Category = () => {
         id={itemIdToDelete}
       />
       <UpdateCategory
-           visible={deleteModalVisible}
-           setVisible={setDeleteModalVisible}
+        openModal={updateModalVisible}
+        // setVisible={setUpdateModalVisible}
+        onClose={(event) => setUpdateModalVisible(event)}
+
            refreshData={refreshData}
            id={itemIdToDelete}
        />
@@ -149,7 +153,7 @@ const Category = () => {
                       <span className="me-3">
                         <Button
                           variant="btn btn-primary"
-                          onClick={() => handleConfirmUpdate(item._id)}
+                          onClick={() => handleConfirmUpdate(item._id,item.name)}
                         >
                           Update
                         </Button>

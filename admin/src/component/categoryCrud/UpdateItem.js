@@ -4,12 +4,10 @@ import { useState } from "react";
 import "./categoryCurd.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-const AddItem = (props) => {
-  toast.configure();
 
+
+const UpdateItem = (props) => {
   const [name, setName] = useState();
   const [file, setFile] = useState();
   const [description, setDescription] = useState();
@@ -29,12 +27,10 @@ const AddItem = (props) => {
     data.append("category", id);
 
     axios
-      .post(`http://localhost:2000/api/item/upload/`, data, {})
+      .put(`http://localhost:2000/api/item/upload/${id}`, data, {})
       .then((res) => {
         onClose(false);
         appendNew(res);
-        toast.success("Added Successfully");
-
         console.log(res);
       });
   };
@@ -53,7 +49,7 @@ const AddItem = (props) => {
           <div className="row add-category">
             <form onSubmit={onSubmit}>
               <div className="p-4">
-                <h3>Add Item</h3>
+                <h3>Update Item</h3>
                 <div>
                   <input
                     id="name"
@@ -126,4 +122,4 @@ const AddItem = (props) => {
   );
 };
 
-export default AddItem;
+export default UpdateItem;

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const DeleteItem = (props) => {
   const { id, refreshData, visible, setVisible } = props;
   const handleClose = () => setVisible(false);
@@ -11,12 +13,16 @@ const DeleteItem = (props) => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    toast.configure();
+
     try {
       await axios
         .delete(`http://localhost:2000/api/item/${id}`)
         .then((response) => {
           setVisible(false);
           refreshData(id);
+          toast.success("Delete Successfully");
+
         });
     } catch (err) {
       console.log(err);

@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import "./Model.css";
 
 const DeleteCategory = (props) => {
+  toast.configure();
   const { id, refreshData, visible, setVisible } = props;
 
   // const [show, setShow] = useState(false);
@@ -21,6 +24,8 @@ const DeleteCategory = (props) => {
         .then((response) => {
           setVisible(false);
           refreshData(id);
+          toast.success("Deleted Successfully");
+
         });
     } catch (err) {
       console.log(err);
