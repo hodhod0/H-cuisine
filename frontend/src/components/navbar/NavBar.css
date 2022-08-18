@@ -24,3 +24,13 @@
   align-items: center;
   height: 50px;
 }
+
+@media only screen and (max-width: 480px) {
+  .container-navbar {
+    align-items: center;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+}

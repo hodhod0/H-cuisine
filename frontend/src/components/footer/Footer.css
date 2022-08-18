@@ -3,6 +3,8 @@
 }
 .footer-inner{
     justify-content: space-around;
+    margin-top: 24px;
+
 }
 .social-media-title{
     
@@ -12,3 +14,11 @@
     margin: 0.5rem;
 
 }
+
+@media only screen and (max-width: 480px) {
+    .footer-inner{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+  }

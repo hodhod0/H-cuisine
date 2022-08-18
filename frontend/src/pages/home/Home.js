@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <img className="home-image" src={img} alt="image" />
+      <img className="home-image" src={img} alt="image" height={500}/>
 
       <div className="py-5">
         <h3 className="brief-home mt-5">Brief</h3>
