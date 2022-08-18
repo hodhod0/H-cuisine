@@ -77,7 +77,6 @@ const Orders = () => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">User Name</th>
               <th scope="col">Phone</th>
               <th scope="col">Address</th>
@@ -91,7 +90,6 @@ const Orders = () => {
               orders.map((order) => {
                 return (
                   <tr key={order.id}>
-                    <td>{order.id}</td>
                     <td>{order.user.username}</td>
                     <td>{order.user.phone}</td>
                     <td>{order.user.address}</td>

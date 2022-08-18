@@ -122,7 +122,7 @@ const Category = () => {
                     </th>
                     <td className="align-middle">
                       <img
-                        className=""
+                        className="ssmm"
                         width={50}
                         height={50}
                         src={item.image}

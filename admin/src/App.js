@@ -32,6 +32,7 @@ function App() {
               <Route path="category" element={<Category />} />
               <Route path="category/:id" element={<Item />} />
               <Route path="users" element={<User />} />
+              <Route path="" element={<User/>}/>
               <Route path="orders" element={<Orders />} />
 
               <Route path="home" element={<Home />} />
