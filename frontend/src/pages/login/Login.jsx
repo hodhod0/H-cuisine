@@ -65,7 +65,7 @@ const Login = () => {
 
   const validate = (values) => {
     const errors = {};
-    const regex = "^w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$";
+    // const regex = "^w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$";
     // const reg = new RegExp(^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$)
     // reg.test(email)
     if (!values.email) {

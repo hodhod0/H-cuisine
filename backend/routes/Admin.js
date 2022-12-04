@@ -11,7 +11,4 @@ router.get("/",controller.getAll)
 router.get("/:id",controller.getbyId)
 
 
-
-
-
 module.exports = router

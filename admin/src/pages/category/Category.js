@@ -131,8 +131,7 @@ const Category = () => {
                     </td>
                     <td className="align-middle">{item.name}</td>
                     <td className="align-middle">
-                      {" "}
-                      <Link
+                       <Link
                         className="text-decoration-none"
                         to={"/dashboard/category/" + item._id}
                       >

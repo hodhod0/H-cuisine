@@ -38,6 +38,6 @@ router.put("/:id", controller.updateItem);
 router.delete("/:id", controller.deleteItem);
 router.get("/bycategory/:id", controller.getItemByCategory);
 router.post("/upload", upload.array("images", 10), controller.post);
-router.post("/itemsByBategory/:id", controller.getItemsByCategoryId);
+router.get("/itemsByBategory/:id", controller.getItemsByCategoryId);
 
 module.exports = router;

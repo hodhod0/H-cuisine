@@ -34,7 +34,7 @@ export const Item = () => {
   console.log(data);
   useEffect(() => {
     axios
-      .post(`http://localhost:2000/api/item/itemsByBategory/${id}`)
+      .get(`http://localhost:2000/api/item/itemsByBategory/${id}`)
       .then((res) => {
         setData(res.data.response);
       })

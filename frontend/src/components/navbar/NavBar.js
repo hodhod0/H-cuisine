@@ -21,6 +21,7 @@ const NavBar = () => {
         {/* <h4 className="navbar-list-title">
           <a href="/home">Home</a>
         </h4> */}
+        <h1 style={{color:"blue"}}>Rahma</h1>
         <Link className="navbar-list-title" to="/home">
           Home
         </Link>

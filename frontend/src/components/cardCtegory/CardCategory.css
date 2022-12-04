@@ -39,22 +39,7 @@
   color: var(--primary) !important;
 }
 
-/* .slides {
-  position: relative;
-}
-.slides .slick-prev,
-.slides .slick-next {
-  position: absolute;
-  top: 50%;
-  z-index: 1000;
-  cursor: pointer;
-}
-.slides.slick-prev {
-  left: 5%;
-}
-.slides .slick-next {
-  right: 5%;
-} */
+ 
 
 .slick-prev {
   left: -36px !important;

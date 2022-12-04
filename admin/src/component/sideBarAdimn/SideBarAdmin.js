@@ -140,7 +140,7 @@ const SideBarAdmin = () => {
             //       }
             //     : { backgroundColor: "transparent" }
             // }
-            href="/dashboard/logout"
+            href="/login"
           >
             <li
               data-aos-duration="1500"

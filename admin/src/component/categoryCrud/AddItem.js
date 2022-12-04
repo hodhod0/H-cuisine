@@ -12,9 +12,7 @@ const AddItem = (props) => {
 
   const [name, setName] = useState();
   const [file, setFile] = useState();
-  const [description, setDescription] = useState();
-  const [price, setPrice] = useState();
-  let { type, title, id, appendNew, openModal, onClose } = props;
+  let { id, appendNew, openModal, onClose } = props;
   const onChange = (e) => {
     const { value } = e.target;
     setName(value);
@@ -100,11 +98,7 @@ const AddItem = (props) => {
                   />
                 </div>
               </div>
-              {/* <div className="form-group">
-                <button className="btn btn-primary" type="submit">
-                  Add
-                </button>
-              </div> */}
+
               <Modal.Footer>
                 <Button
                   variant="secondary"
